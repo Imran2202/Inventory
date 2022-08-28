@@ -1,0 +1,89 @@
+//Written by Imran Ali
+//5/28/2022
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Practice
+{
+    internal class Program
+    {
+        
+         class Arrow
+        {
+            private headtype head;
+            private fletchtype fletch;
+            private float shaft;
+
+           //Use the constructor to set fields to method return values
+           public Arrow()
+            {
+                head = gethead();
+                fletch = getfletch();
+                shaft = getlength();
+            }
+            //Method to get user input for arrowhead type
+            private headtype gethead()
+            {
+
+                Console.WriteLine("What type would you like(Steel, Wood, Obsidian): ");
+                string user = Console.ReadLine();
+                if (user == "Steel")
+                    return headtype.Steel;
+
+                else if (user == "Wood")
+                    return headtype.Wood;
+
+                else
+                    return headtype.Obsidian;
+            }
+            // Create a method to get user input for fletching type
+            private fletchtype getfletch()
+            {
+                Console.WriteLine("What fetching would you like( Plastic, Turkey feather, Goose feather): ");
+                string user = Console.ReadLine();
+                if (user == "Plastic")
+                    return fletchtype.Plastic;
+
+                else if (user == "Turkey feather")
+                    return fletchtype.Turkeyfeather;
+
+                else
+                    return fletchtype.Goosefeather;
+            }
+            //Method to get user input for arrowhead type
+            private float getlength()
+            {
+                Console.WriteLine("How long is your shaft(60-100cm): ");
+                float length = Convert.ToInt32(Console.ReadLine());
+                return length;
+            }
+            //Method to calculate and display final cost
+            public void getcost()
+            {
+                float headprice = (float)head;
+                float fletchprice = (float)fletch;
+                float total = (float)(headprice + fletchprice + (0.05 * shaft));
+                Console.WriteLine($"The total cost for Arrowhead - {head}, Fletching - {fletch}, Shaft - {shaft}cm is: ${total}");
+
+            }
+        }
+            static void Main(string[] args)
+        {
+            Arrow arrow1 = new Arrow();
+            arrow1.getcost();
+            
+
+            
+        }
+        enum headtype { Steel = 10, Wood = 3, Obsidian = 5}
+        enum fletchtype { Plastic = 10, Turkeyfeather = 5, Goosefeather = 3}
+    }
+
+}
+
+
